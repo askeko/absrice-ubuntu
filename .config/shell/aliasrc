@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Use neovim for vim if present
+[ -x "$command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# sudo not required for some system commands
+for command in mount umount sv pacman updatedb su shutdown poweroff reboot; do
+	alias $command="sudo $command"
+done
+unset command
+
+# Verbosity and settings that you pretty much just always are going to want
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	mkd="mkdir -pv"
+
+# Colorize commands when possible
+alias \
+	grep="grep --color=auto" \
+	rg="rg --color=auto" \
+	diff="diff --color=auto" \
+	cat="bat"
+
+# Alias replacing ls
+alias ls="exa -al --color=always --group-directories-first" \ # list
+alias la="exa -a --color=always --group-directories-first" \  # all files and dirs
+alias ll="exa -l --color=always --group-directories-first" \  # long format
+alias lt="exa -aT --color=always --group-directories-first" \ # tree listing
+
+# Making long commands shorter
+alias \
+	g="git" \
+	c="code" \
+	v="$EDITOR" \
+	evi="evince"

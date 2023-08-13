@@ -1,0 +1,33 @@
+# Adds '~/.local/bin' to $PATH
+export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+export PATH="$PATH:${$(find ~/.local/bin/scripts -type d -printf %p:)%%:}"
+
+unsetopt PROMPT_SP
+
+# Default programs:
+export EDITOR="nvim"
+export TERMINAL="wezterm"
+export BROWSER="firefox"
+
+# bat (cat) coloring:
+export BAT_THEME="Enky-TokyoNight"
+
+# node version manager
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# ~/ Clean-up
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
+export LESSHISTFILE="-"
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/jupyter"
+export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line may break some DM's
+export CARGO_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/cargo"
+export NODE_REPL_HISTORY="${XDG_CONFIG_HOME:-$HOME/.config}/node_repl_history"
+export IPYTHONDIR="${XDG_CONFIG_HOME:-$HOME/.config}/ipython"
